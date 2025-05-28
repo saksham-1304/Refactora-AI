@@ -4,21 +4,20 @@ A robust Node.js/Express API server that integrates with Google's Gemini AI to p
 
 ## 📋 Table of Contents
 
-- [Overview](#overview)
-- [Tech Stack](#tech-stack)
-- [Features](#features)
-- [Getting Started](#getting-started)
-- [Project Structure](#project-structure)
-- [API Documentation](#api-documentation)
-- [Environment Configuration](#environment-configuration)
-- [Google Gemini Integration](#google-gemini-integration)
-- [Development Scripts](#development-scripts)
-- [Error Handling](#error-handling)
-- [Security](#security)
-- [Performance](#performance)
-- [Deployment](#deployment)
-- [Monitoring](#monitoring)
-- [Troubleshooting](#troubleshooting)
+- [🔍 Overview](#overview)
+- [💻 Tech Stack](#tech-stack)
+- [✨ Features](#features)
+- [🚀 Getting Started](#getting-started)
+- [📁 Project Structure](#project-structure)
+- [📚 API Documentation](#api-documentation)
+- [🔧 Environment Configuration](#environment-configuration)
+- [🤖 Google Gemini Integration](#google-gemini-integration)
+- [📜 Development Scripts](#development-scripts)
+- [🛡️ Error Handling](#error-handling)
+- [🔒 Security](#security)
+- [⚡ Performance](#performance)
+- [🚀 Deployment](#deployment)
+- [🐛 Troubleshooting](#troubleshooting)
 
 ## 🔍 Overview
 
@@ -86,14 +85,14 @@ The backend serves as the API layer between the React frontend and Google's Gemi
 ### Quick Setup
 ```bash
 # Navigate to backend directory
-cd Backend
+cd BackEnd
 
 # Install dependencies
 npm install
 
 # Set up environment variables
-cp .env.example .env
-# Edit .env with your Google Gemini API key
+echo "PORT=5000" > .env
+echo "GOOGLE_GEMINI_KEY=your_api_key_here" >> .env
 
 # Start development server
 npm run dev
@@ -112,7 +111,7 @@ curl http://localhost:5000
 ## 📁 Project Structure
 
 ```
-Backend/
+BackEnd/
 ├── 📂 src/                    # Source code directory
 │   ├── 📂 controllers/        # Request handlers
 │   │   └── ai.controller.js   # AI-related route handlers
@@ -123,7 +122,6 @@ Backend/
 │   └── app.js                 # Express app configuration
 ├── 📄 server.js               # Server entry point
 ├── 📄 package.json            # Dependencies and scripts
-├── 📄 .env.example            # Environment variables template
 ├── 📄 .env                    # Environment configuration (git-ignored)
 └── 📄 README.md               # This documentation
 ```
@@ -217,14 +215,6 @@ function example() {
 "Code is required"
 ```
 
-**Response (Error - 500):**
-```json
-{
-  "error": "Internal server error",
-  "message": "Error details..."
-}
-```
-
 ### Request/Response Examples
 
 **Valid Request:**
@@ -245,7 +235,7 @@ curl -X POST http://localhost:5000/ai/get-review \
 
 ### Required Environment Variables
 
-Create `.env` file in the Backend directory:
+Create `.env` file in the BackEnd directory:
 
 ```bash
 # Server Configuration
@@ -253,10 +243,6 @@ PORT=5000
 
 # Google Gemini AI Configuration
 GOOGLE_GEMINI_KEY=your_actual_api_key_here
-
-# Optional Configuration
-NODE_ENV=development
-LOG_LEVEL=info
 ```
 
 ### Environment Variable Details
@@ -265,8 +251,6 @@ LOG_LEVEL=info
 |----------|-------------|----------|---------|
 | `PORT` | Server port number | Yes | 5000 |
 | `GOOGLE_GEMINI_KEY` | Google Gemini API key | Yes | None |
-| `NODE_ENV` | Environment mode | No | development |
-| `LOG_LEVEL` | Logging level | No | info |
 
 ### Getting Google Gemini API Key
 
@@ -295,7 +279,9 @@ The AI service is configured with a comprehensive system instruction that gives 
 ```javascript
 const model = genAI.getGenerativeModel({
     model: "gemini-2.0-flash",
-    systemInstruction: `Expert code reviewer with 7+ years experience...`
+    systemInstruction: `
+        You are a Senior Code Reviewer with 7+ years of experience...
+    `
 });
 ```
 
@@ -312,11 +298,10 @@ The AI model is instructed to:
 ### Response Format
 
 The AI provides responses in markdown format with:
-- **Overview** - General code assessment
+- **Analysis Overview** - General code assessment
 - **Issues Found** - Specific problems identified
 - **Recommendations** - Actionable improvement suggestions
-- **Code Examples** - Refactored code snippets
-- **Best Practices** - Industry standard advice
+- **Improved Code** - Refactored code snippets
 
 ## 📜 Development Scripts
 
@@ -358,14 +343,11 @@ if (!code) {
 **2. AI Service Errors (500)**
 ```javascript
 try {
-    const response = await aiService(code);
+    const response = await generateContent(code);
     res.send(response);
 } catch (error) {
     console.error('AI Service Error:', error);
-    res.status(500).json({
-        error: 'AI service unavailable',
-        message: error.message
-    });
+    throw new Error('Failed to generate code review');
 }
 ```
 
@@ -373,16 +355,6 @@ try {
 - Connection timeouts
 - Rate limiting
 - API quota exceeded
-
-### Error Response Format
-```json
-{
-  "error": "Error type",
-  "message": "Detailed error description",
-  "code": "ERROR_CODE",
-  "timestamp": "2024-01-01T00:00:00.000Z"
-}
-```
 
 ## 🔒 Security
 
@@ -422,11 +394,6 @@ app.use(rateLimit({
 }));
 ```
 
-**3. Input Validation**
-```javascript
-const { body, validationResult } = require('express-validator');
-```
-
 ## ⚡ Performance
 
 ### Current Optimizations
@@ -434,15 +401,6 @@ const { body, validationResult } = require('express-validator');
 - **Efficient Routing** - Minimal middleware overhead
 - **Error Caching** - Prevent repeated failed requests
 - **Connection Pooling** - Reuse HTTP connections
-
-### Performance Monitoring
-```javascript
-// Add timing middleware
-app.use((req, res, next) => {
-    req.startTime = Date.now();
-    next();
-});
-```
 
 ### Scaling Considerations
 - **Load Balancing** - Multiple server instances
@@ -471,17 +429,11 @@ heroku create your-app-name
 git push heroku main
 ```
 
-**3. DigitalOcean App Platform**
-```bash
-# Use GitHub integration
-# Configure environment variables in dashboard
-```
-
-**4. VPS/Cloud Server**
+**3. VPS/Cloud Server**
 ```bash
 # Clone repository
 git clone <your-repo>
-cd Backend
+cd BackEnd
 
 # Install dependencies
 npm install --production
@@ -496,48 +448,7 @@ pm2 start server.js --name "ai-code-reviewer"
 NODE_ENV=production
 PORT=443
 GOOGLE_GEMINI_KEY=your_production_key
-CORS_ORIGIN=https://yourdomain.com
 ```
-
-### Docker Deployment
-```dockerfile
-FROM node:18-alpine
-WORKDIR /app
-COPY package*.json ./
-RUN npm install --production
-COPY . .
-EXPOSE 5000
-CMD ["npm", "start"]
-```
-
-## 📊 Monitoring
-
-### Health Checks
-```javascript
-// Add health check endpoint
-app.get('/health', (req, res) => {
-    res.json({
-        status: 'healthy',
-        timestamp: new Date().toISOString(),
-        uptime: process.uptime()
-    });
-});
-```
-
-### Logging
-```javascript
-// Add request logging
-app.use((req, res, next) => {
-    console.log(`${new Date().toISOString()} - ${req.method} ${req.path}`);
-    next();
-});
-```
-
-### Metrics to Monitor
-- **Response Times** - API endpoint performance
-- **Error Rates** - Failed request percentage
-- **AI API Usage** - Gemini API quota consumption
-- **Memory Usage** - Server resource utilization
 
 ## 🐛 Troubleshooting
 
@@ -602,22 +513,12 @@ curl -X POST http://localhost:5000/ai/get-review \
 node -e "console.log(process.env.PORT, process.env.GOOGLE_GEMINI_KEY ? 'SET' : 'NOT SET')"
 ```
 
-### Log Analysis
-```bash
-# Monitor server logs in real-time
-npm run dev | grep ERROR
-
-# Check specific error patterns
-grep -i "error" server.log
-```
-
 ## 📚 Additional Resources
 
 - **Node.js Documentation**: https://nodejs.org/docs
 - **Express.js Guide**: https://expressjs.com/guide
 - **Google Gemini AI**: https://ai.google.dev/docs
 - **API Best Practices**: https://restfulapi.net/
-- **Node.js Security**: https://nodejs.org/en/security/
 
 ## 🤝 Contributing to Backend
 
@@ -635,15 +536,17 @@ grep -i "error" server.log
 4. Add proper error handling
 5. Update API documentation
 
-### Testing
-```bash
-# Add tests (recommended)
-npm install --save-dev jest supertest
-npm test
-```
+## 📧 Contact & Support
+
+For technical support, bug reports, or feature requests:
+- 📧 **Email**: sakshamsinghrathore1304@gmail.com
+- 🐛 **Issues**: [GitHub Issues](https://github.com/sakshamsinghrathore/AI-Code-Reviewer/issues)
+- 💬 **Discussions**: [GitHub Discussions](https://github.com/sakshamsinghrathore/AI-Code-Reviewer/discussions)
+- 📖 **Documentation**: Check this README for detailed information
 
 ---
 
 <div align="center">
-  <strong>Backend powered by 🚀 Node.js + 🤖 Google Gemini AI</strong>
+  <strong>Backend powered by 🚀 Node.js + 🤖 Google Gemini AI</strong><br>
+  <em>Developed and maintained by sakshamsinghrathore1304@gmail.com</em>
 </div>
