@@ -360,6 +360,10 @@ console.log('Loading state:', isLoading);
 - Write descriptive variable names
 - Add comments for complex logic
 
+### Getting Help
+If you have questions or need assistance, feel free to reach out:
+- **Email**: sakshamsinghrathore1304@gmail.com
+
 ### Testing
 ```bash
 # Add tests in the future
@@ -373,8 +377,15 @@ npm test
 4. Ensure ESLint passes
 5. Submit pull request
 
+## 📧 Contact & Support
+
+For questions, suggestions, or support:
+- **Email**: sakshamsinghrathore1304@gmail.com
+- **Issues**: Use GitHub Issues for bug reports and feature requests
+
 ---
 
 <div align="center">
-  <strong>Frontend built with ⚛️ React + ⚡ Vite</strong>
+  <strong>Frontend built with ⚛️ React + ⚡ Vite</strong><br>
+  <em>Maintained by sakshamsinghrathore1304@gmail.com</em>
 </div>
