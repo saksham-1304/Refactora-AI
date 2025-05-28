@@ -80,10 +80,10 @@ const model = genAI.getGenerativeModel({
 });
 
 
-async function generateContent(prompt) {
-    const result = await model.generateContent(prompt);
+async function generateContent(code) {
+    const result = await model.generateContent(code);
 
-    console.log(result.response.text())
+    //console.log(result.response.text())
 
     return result.response.text();
 
