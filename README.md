@@ -294,7 +294,7 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 
 ## 🆘 Support
 
-- 📧 **Email**: support@ai-code-reviewer.com
+- 📧 **Email**: sakshamsinghrathore1304@gmail.com
 - 🐛 **Issues**: [GitHub Issues](https://github.com/yourusername/AI-Code-Reviewer/issues)
 - 💬 **Discussions**: [GitHub Discussions](https://github.com/yourusername/AI-Code-Reviewer/discussions)
 
