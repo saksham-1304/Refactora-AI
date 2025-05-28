@@ -14,10 +14,6 @@ function App() {
   const [review, setReview] = useState('');
   const [isLoading, setIsLoading] = useState(false);
 
-  useEffect(() => {
-    prism.highlightAll();
-  }, []);
-
   // Add useEffect to ensure Prism is properly initialized with the active language
   useEffect(() => {
     prism.highlightAll();
@@ -52,7 +48,6 @@ function App() {
                 value={content}
                 onValueChange={updateContent}
                 highlight={code => {
-                  // Removed dynamic language references
                   const grammar = prism.languages.javascript;
                   return prism.highlight(code, grammar, 'javascript');
                 }}
