@@ -4,17 +4,17 @@ A modern React application built with Vite that provides an intuitive interface 
 
 ## 📋 Table of Contents
 
-- [Overview](#overview)
-- [Tech Stack](#tech-stack)
-- [Features](#features)
-- [Getting Started](#getting-started)
-- [Project Structure](#project-structure)
-- [Component Architecture](#component-architecture)
-- [Styling Guide](#styling-guide)
-- [Development Scripts](#development-scripts)
-- [Build & Deployment](#build--deployment)
-- [Performance Optimization](#performance-optimization)
-- [Troubleshooting](#troubleshooting)
+- [🔍 Overview](#overview)
+- [💻 Tech Stack](#tech-stack)
+- [✨ Features](#features)
+- [🚀 Getting Started](#getting-started)
+- [📁 Project Structure](#project-structure)
+- [🏗️ Component Architecture](#component-architecture)
+- [🎨 Styling Guide](#styling-guide)
+- [📜 Development Scripts](#development-scripts)
+- [🚀 Build & Deployment](#build--deployment)
+- [⚡ Performance Optimization](#performance-optimization)
+- [🐛 Troubleshooting](#troubleshooting)
 
 ## 🔍 Overview
 
@@ -45,6 +45,7 @@ The frontend is a single-page React application that provides:
 - **react-markdown 9.0.3** - Render markdown content
 - **rehype-highlight 7.0.2** - Syntax highlighting in markdown
 - **highlight.js 11.11.1** - Additional syntax highlighting
+- **highlight.js/styles/github-dark.css** - Dark theme for markdown code
 
 ### HTTP Client
 - **Axios 1.7.9** - Promise-based HTTP client for API calls
@@ -64,8 +65,8 @@ The frontend is a single-page React application that provides:
 ### Code Editor
 - 🖋️ **Syntax Highlighting** - JavaScript syntax highlighting with PrismJS
 - ⌨️ **Code Editing** - Full code editing capabilities
-- 📝 **Auto-indentation** - Smart code formatting
-- 🔤 **Monospace Font** - Fira Code font for better readability
+- 📝 **Fira Code Font** - Monospace font for better readability
+- 🎯 **Live Updates** - Real-time syntax highlighting
 
 ### Review Display
 - 📄 **Markdown Rendering** - Rich text display of AI reviews
@@ -113,7 +114,6 @@ const response = await axios.post('http://localhost:YOUR_PORT/ai/get-review', {
 ```
 Frontend/
 ├── 📂 public/                  # Static assets
-│   └── vite.svg               # Vite logo
 ├── 📂 src/                    # Source code
 │   ├── App.jsx                # Main application component
 │   ├── main.jsx               # React DOM entry point
@@ -132,7 +132,7 @@ Frontend/
 ```javascript
 // State Management
 const [content, setContent] = useState()      // Code editor content
-const [review, setReview] = useState()        // AI review response
+const [review, setReview] = useState()        # AI review response
 const [isLoading, setIsLoading] = useState()  // Loading state
 
 // Core Functions
@@ -159,6 +159,7 @@ reviewCode()       // Send code to backend API
   style={{
     fontFamily: '"Fira code", "Fira Mono", monospace',
     fontSize: 16,
+    backgroundColor: "#0c0c0c",
     // ... styling options
   }}
 />
@@ -182,7 +183,7 @@ reviewCode()       // Send code to backend API
 - `p-4`, `px-8` - Padding utilities
 
 **Background Colors:**
-- `bg-black` - Editor background
+- `bg-black` - Editor background (#000000)
 - `bg-[#343434]` - Review panel background
 - `bg-violet-100` - Button background
 
@@ -198,9 +199,10 @@ scrollbar-thin scrollbar-thumb-gray-500 scrollbar-track-gray-700
 
 ### Custom Styles
 Additional styles are defined inline for:
-- Code editor background and text colors
+- Code editor background (`#0c0c0c`) and text colors
 - Font family for monospace display
 - Scrollbar behavior and appearance
+- Loading spinner animations
 
 ## 📜 Development Scripts
 
@@ -261,12 +263,6 @@ npm run build
 - Upload `dist/` folder to any static hosting service
 - Configure server to serve `index.html` for all routes
 
-### Environment Variables for Production
-```bash
-# If needed, create .env file
-VITE_API_URL=https://your-backend-url.com
-```
-
 ## ⚡ Performance Optimization
 
 ### Implemented Optimizations
@@ -276,14 +272,9 @@ VITE_API_URL=https://your-backend-url.com
 - **Asset Optimization** - Compressed images and fonts
 
 ### Performance Best Practices
-- **Lazy Loading** - Components loaded on demand
-- **Memoization** - React.memo for expensive components
 - **Efficient Re-renders** - Optimized state updates
-
-### Bundle Analysis
-```bash
-npm run build -- --analyze
-```
+- **CSS-in-JS Avoidance** - Using Tailwind for better performance
+- **Bundle Size Monitoring** - Keep dependencies minimal
 
 ## 🐛 Troubleshooting
 
@@ -300,7 +291,7 @@ npm run dev -- --port 3000
 ```bash
 # Error: Network Error
 # Solution: Ensure backend is running on port 5000
-cd ../Backend && npm run dev
+cd ../BackEnd && npm run dev
 ```
 
 **3. Styling Issues**
@@ -314,7 +305,7 @@ npm run dev
 ```bash
 # Error: No syntax highlighting
 # Solution: Check PrismJS configuration
-# Ensure language is supported
+# Verify useEffect is triggering prism.highlightAll()
 ```
 
 ### Development Tips
@@ -360,16 +351,6 @@ console.log('Loading state:', isLoading);
 - Write descriptive variable names
 - Add comments for complex logic
 
-### Getting Help
-If you have questions or need assistance, feel free to reach out:
-- **Email**: sakshamsinghrathore1304@gmail.com
-
-### Testing
-```bash
-# Add tests in the future
-npm test
-```
-
 ### Pull Request Process
 1. Create feature branch
 2. Make changes to frontend code
@@ -380,8 +361,9 @@ npm test
 ## 📧 Contact & Support
 
 For questions, suggestions, or support:
-- **Email**: sakshamsinghrathore1304@gmail.com
-- **Issues**: Use GitHub Issues for bug reports and feature requests
+- 📧 **Email**: sakshamsinghrathore1304@gmail.com
+- 🐛 **Issues**: Use GitHub Issues for bug reports and feature requests
+- 💬 **Discussions**: Join our community discussions for help and ideas
 
 ---
 
