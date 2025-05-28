@@ -4,24 +4,24 @@ A modern, full-stack web application that leverages Google's Gemini AI to provid
 
 ## 📋 Table of Contents
 
-- [Overview](#overview)
-- [Features](#features)
-- [Tech Stack](#tech-stack)
-- [Architecture](#architecture)
-- [Getting Started](#getting-started)
-- [Project Structure](#project-structure)
-- [API Documentation](#api-documentation)
-- [Environment Setup](#environment-setup)
-- [Development Workflow](#development-workflow)
-- [Deployment](#deployment)
-- [Contributing](#contributing)
-- [License](#license)
+- [🔍 Overview](#overview)
+- [✨ Features](#features)  
+- [💻 Tech Stack](#tech-stack)
+- [🏗️ Architecture](#architecture)
+- [🚀 Getting Started](#getting-started)
+- [📁 Project Structure](#project-structure)
+- [📚 API Documentation](#api-documentation)
+- [🔧 Environment Setup](#environment-setup)
+- [🔄 Development Workflow](#development-workflow)
+- [🚀 Deployment](#deployment)
+- [👥 Contributing](#contributing)
+- [📄 License](#license)
 
-## 🔍 Overview
+## Overview
 
 AI-Code-Reviewer is designed to help developers improve their code quality by providing instant AI-powered code reviews. The application features a clean, modern interface with a split-pane design - code editor on the left and AI review results on the right. Simply paste your code, click "Review", and receive detailed feedback within seconds.
 
-## ✨ Features
+## Features
 
 - 🖋️ **Interactive Code Editor** - Syntax highlighting with PrismJS
 - 🤖 **AI-Powered Reviews** - Leverages Google Gemini 2.0 Flash model
@@ -32,7 +32,7 @@ AI-Code-Reviewer is designed to help developers improve their code quality by pr
 - 🔄 **Scrollable Interface** - Custom scrollbars for both editor and review panes
 - 🎯 **Expert-Level Reviews** - 7+ years experience equivalent feedback
 
-## 💻 Tech Stack
+## Tech Stack
 
 ### Frontend Stack
 - **React 19** - Latest React with modern hooks and features
@@ -56,7 +56,7 @@ AI-Code-Reviewer is designed to help developers improve their code quality by pr
 - **Nodemon** - Auto-restart server during development
 - **Git** - Version control system
 
-## 🏗️ Architecture
+## Architecture
 
 ```
 ┌─────────────────┐    HTTP/HTTPS    ┌─────────────────┐
@@ -72,7 +72,7 @@ AI-Code-Reviewer is designed to help developers improve their code quality by pr
 └─────────────────┘                  └─────────────────┘
 ```
 
-## 🚀 Getting Started
+## Getting Started
 
 ### Prerequisites
 
@@ -93,7 +93,7 @@ Ensure you have the following installed:
 2. **Install dependencies for both frontend and backend**
    ```bash
    # Install backend dependencies
-   cd Backend
+   cd BackEnd
    npm install
    
    # Install frontend dependencies
@@ -104,19 +104,18 @@ Ensure you have the following installed:
 3. **Environment Configuration**
    ```bash
    # Navigate to backend directory
-   cd ../Backend
+   cd ../BackEnd
    
-   # Copy environment template
-   cp .env.example .env
-   
-   # Edit .env file with your credentials
+   # Create environment file
    # Add your Google Gemini API key
+   echo "PORT=5000" > .env
+   echo "GOOGLE_GEMINI_KEY=your_api_key_here" >> .env
    ```
 
 4. **Start the application**
    ```bash
    # Terminal 1: Start Backend Server
-   cd Backend
+   cd BackEnd
    npm run dev
    
    # Terminal 2: Start Frontend Development Server
@@ -128,7 +127,7 @@ Ensure you have the following installed:
    - Frontend: http://localhost:5173
    - Backend API: http://localhost:5000
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 AI-Code-Reviewer/
@@ -140,22 +139,25 @@ AI-Code-Reviewer/
 │   │   └── index.css           # Global styles
 │   ├── package.json            # Frontend dependencies
 │   ├── vite.config.js          # Vite configuration
+│   ├── index.html              # HTML template
 │   └── README.md               # Frontend documentation
-├── 📂 Backend/                  # Node.js/Express server
+├── 📂 BackEnd/                 # Node.js/Express server
 │   ├── 📂 src/                 # Source code
 │   │   ├── 📂 controllers/     # Request handlers
+│   │   │   └── ai.controller.js
 │   │   ├── 📂 routes/          # API routes
+│   │   │   └── ai.routes.js
 │   │   ├── 📂 services/        # Business logic
+│   │   │   └── ai.service.js
 │   │   └── app.js              # Express app configuration
 │   ├── server.js               # Server entry point
 │   ├── package.json            # Backend dependencies
-│   ├── .env.example            # Environment template
 │   └── README.md               # Backend documentation
 ├── .gitignore                  # Git ignore rules
 └── README.md                   # Main project documentation
 ```
 
-## 📚 API Documentation
+## API Documentation
 
 ### Code Review Endpoint
 
@@ -172,16 +174,16 @@ AI-Code-Reviewer/
 ```markdown
 # Code Review Results
 
-## Overview
+## 🔍 Analysis Overview
 Your code is functional but could benefit from improvements...
 
-## Issues Found
-- ❌ Missing error handling
-- ❌ No input validation
+## ❌ Issues Found
+- Missing error handling
+- No input validation
 
-## Recommendations
-- ✅ Add try-catch blocks
-- ✅ Implement proper validation
+## ✅ Recommendations
+- Add try-catch blocks
+- Implement proper validation
 ...
 ```
 
@@ -190,11 +192,11 @@ Your code is functional but could benefit from improvements...
 - `400` - Bad Request (missing code)
 - `500` - Internal Server Error
 
-## 🔧 Environment Setup
+## Environment Setup
 
 ### Backend Environment Variables
 
-Create a `.env` file in the `Backend` directory:
+Create a `.env` file in the `BackEnd` directory:
 
 ```bash
 # Server Configuration
@@ -202,9 +204,6 @@ PORT=5000
 
 # Google Gemini AI Configuration
 GOOGLE_GEMINI_KEY=your_api_key_here
-
-# Optional: Add other environment variables
-NODE_ENV=development
 ```
 
 ### Getting Google Gemini API Key
@@ -214,7 +213,7 @@ NODE_ENV=development
 3. Create a new API key
 4. Copy the key to your `.env` file
 
-## 🔄 Development Workflow
+## Development Workflow
 
 ### Frontend Development
 ```bash
@@ -227,18 +226,12 @@ npm run lint         # Run ESLint
 
 ### Backend Development
 ```bash
-cd Backend
+cd BackEnd
 npm run dev          # Start with nodemon (auto-restart)
 npm start            # Start production server
 ```
 
-### Code Style & Quality
-- Follow ESLint configuration
-- Use Prettier for code formatting
-- Write descriptive commit messages
-- Follow semantic versioning
-
-## 🚀 Deployment
+## Deployment
 
 ### Frontend (Vercel/Netlify)
 ```bash
@@ -249,7 +242,7 @@ npm run build
 
 ### Backend (Railway/Heroku/DigitalOcean)
 ```bash
-cd Backend
+cd BackEnd
 # Set environment variables on your hosting platform
 # Deploy using git or platform-specific CLI
 ```
@@ -259,7 +252,7 @@ cd Backend
 - Update CORS origins for production domains
 - Use production-grade Google Gemini API limits
 
-## 👥 Contributing
+## Contributing
 
 We welcome contributions! Please follow these steps:
 
@@ -288,15 +281,15 @@ We welcome contributions! Please follow these steps:
 - Ensure all tests pass
 - Write clear commit messages
 
-## 📄 License
+## License
 
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
 ## 🆘 Support
 
 - 📧 **Email**: sakshamsinghrathore1304@gmail.com
-- 🐛 **Issues**: [GitHub Issues](https://github.com/yourusername/AI-Code-Reviewer/issues)
-- 💬 **Discussions**: [GitHub Discussions](https://github.com/yourusername/AI-Code-Reviewer/discussions)
+- 🐛 **Issues**: [GitHub Issues](https://github.com/sakshamsinghrathore/AI-Code-Reviewer/issues)
+- 💬 **Discussions**: [GitHub Discussions](https://github.com/sakshamsinghrathore/AI-Code-Reviewer/discussions)
 
 ## 🙏 Acknowledgments
 
@@ -309,5 +302,6 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 ---
 
 <div align="center">
-  <strong>Made with ❤️ by developers, for developers</strong>
+  <strong>Made with ❤️ by developers, for developers</strong><br>
+  <em>Created and maintained by sakshamsinghrathore1304@gmail.com</em>
 </div>
