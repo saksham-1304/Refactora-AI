@@ -12,7 +12,9 @@
   "dependencies": {
     "@tailwindcss/vite": "^4.1.7",
     "axios": "^1.7.9",
+    "framer-motion": "^11.0.0",
     "highlight.js": "^11.11.1",
+    "lucide-react": "^0.263.1",
     "marked": "^15.0.6",
     "prismjs": "^1.29.0",
     "react": "^19.0.0",

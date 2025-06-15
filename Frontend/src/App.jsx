@@ -1,113 +1,138 @@
-import { useState, useEffect } from 'react'
-import "prismjs/themes/prism-tomorrow.css"
-
-import Editor from "react-simple-code-editor"
-import prism from "prismjs"
-import Markdown from "react-markdown"
-import rehypeHighlight from "rehype-highlight";
+import { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
+import axios from 'axios';
+import "prismjs/themes/prism-tomorrow.css";
 import "highlight.js/styles/github-dark.css";
-import axios from 'axios'
 
+import Header from './components/Header';
+import CodeEditor from './components/CodeEditor';
+import ReviewPanel from './components/ReviewPanel';
+import StatsPanel from './components/StatsPanel';
 
 function App() {
-  const [content, setContent] = useState(`function sum() {\n  return 1 + 1\n}`);
+  const [content, setContent] = useState(`function calculateFactorial(n) {
+  if (n <= 1) return 1;
+  return n * calculateFactorial(n - 1);
+}
+
+// Example usage
+console.log(calculateFactorial(5)); // Output: 120`);
+  
   const [review, setReview] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const [stats, setStats] = useState({
+    totalReviews: 0,
+    avgTime: '0s',
+    issuesFound: 0,
+    improvements: 0
+  });
 
-  // Add useEffect to ensure Prism is properly initialized with the active language
+  // Load stats from localStorage on component mount
   useEffect(() => {
-    prism.highlightAll();
-  }, [content]);
+    const savedStats = localStorage.getItem('aiCodeReviewerStats');
+    if (savedStats) {
+      setStats(JSON.parse(savedStats));
+    }
+  }, []);
 
-  const updateContent = (newContent) => {
-    setContent(newContent);
-  };
+  // Save stats to localStorage whenever stats change
+  useEffect(() => {
+    localStorage.setItem('aiCodeReviewerStats', JSON.stringify(stats));
+  }, [stats]);
 
-  async function reviewCode() {
+  const reviewCode = async () => {
+    if (!content.trim()) {
+      setReview('Please enter some code to review.');
+      return;
+    }
+
     setIsLoading(true);
+    const startTime = Date.now();
+    
     try {
       const response = await axios.post('http://localhost:5000/ai/get-review', {
         code: content
       });
+      
+      const endTime = Date.now();
+      const reviewTime = ((endTime - startTime) / 1000).toFixed(1);
+      
       setReview(response.data);
+      
+      // Update stats
+      const issuesCount = (response.data.match(/❌|⚠️|🐛/g) || []).length;
+      const improvementsCount = (response.data.match(/✅|💡|🚀/g) || []).length;
+      
+      setStats(prevStats => ({
+        totalReviews: prevStats.totalReviews + 1,
+        avgTime: `${reviewTime}s`,
+        issuesFound: prevStats.issuesFound + issuesCount,
+        improvements: prevStats.improvements + improvementsCount
+      }));
+      
     } catch (error) {
       console.error('Error getting review:', error);
-      setReview('Error fetching review. Please try again.');
+      setReview('❌ **Error**: Unable to get review. Please check if the backend server is running and try again.');
     } finally {
       setIsLoading(false);
     }
-  }
+  };
+
+  const regenerateReview = () => {
+    reviewCode();
+  };
 
   return (
-    <>
-      <main className="h-dvh w-full p-6 flex gap-4">
-        <div className="h-full flex-1 rounded-lg bg-black relative flex flex-col">
-          <div className='overflow-auto scrollbar-thin scrollbar-thumb-gray-500 scrollbar-track-gray-700'>
-            <div className="flex-1 relative">
-              <Editor
-                value={content}
-                onValueChange={updateContent}
-                highlight={code => {
-                  const grammar = prism.languages.javascript;
-                  return prism.highlight(code, grammar, 'javascript');
-                }}
-                padding={10}
-                style={{
-                  fontFamily: '"Fira code", "Fira Mono", monospace',
-                  fontSize: 16,
-                  borderRadius: "0 0 0.7rem 0.7rem",
-                  height: "100%",
-                  width: "100%",
-                  backgroundColor: "#0c0c0c",
-                  caretColor: "white",
-                  color: "white",
-                  overflow: "auto",
-                  overflowWrap: "break-word",
-                  whiteSpace: "pre-wrap"
-                }}
-              />
-            </div>
-          </div>
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900">
+      {/* Animated background */}
+      <div className="fixed inset-0 overflow-hidden pointer-events-none">
+        <motion.div
+          animate={{
+            backgroundPosition: ['0% 0%', '100% 100%'],
+          }}
+          transition={{
+            duration: 20,
+            repeat: Infinity,
+            repeatType: 'reverse',
+          }}
+          className="absolute inset-0 opacity-30"
+          style={{
+            backgroundImage: `
+              radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
+              radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.3) 0%, transparent 50%),
+              radial-gradient(circle at 40% 40%, rgba(120, 219, 255, 0.3) 0%, transparent 50%)
+            `,
+            backgroundSize: '100% 100%',
+          }}
+        />
+      </div>
 
-          <div
-            onClick={!isLoading ? reviewCode : undefined}
-            className={`absolute bottom-4 right-4 py-2 px-8 font-medium rounded-lg flex items-center justify-center ${isLoading
-              ? 'bg-violet-100/50 text-black/60 cursor-not-allowed'
-              : 'bg-violet-100 text-black cursor-pointer hover:bg-violet-200'
-              }`}
-          >
-            {isLoading ? (
-              <>
-                <svg className="animate-spin -ml-1 mr-2 h-4 w-4 text-black" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                  <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                  <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                </svg>
-                Reviewing...
-              </>
-            ) : "Review"}
+      <div className="relative z-10">
+        <Header />
+        
+        <main className="p-6 space-y-6">
+          {/* Stats Panel */}
+          <StatsPanel stats={stats} />
+          
+          {/* Main Content */}
+          <div className="grid lg:grid-cols-2 gap-6 h-[calc(100vh-200px)]">
+            <CodeEditor
+              content={content}
+              setContent={setContent}
+              onReview={reviewCode}
+              isLoading={isLoading}
+            />
+            
+            <ReviewPanel
+              review={review}
+              isLoading={isLoading}
+              onRegenerate={regenerateReview}
+            />
           </div>
-        </div>
-
-        <div className="h-full flex-1 rounded-lg bg-[#343434] p-4 px-8 text-1xl overflow-auto scrollbar-thin scrollbar-thumb-gray-500 scrollbar-track-gray-700 text-gray-100">
-          {isLoading ? (
-            <div className="flex items-center justify-center h-full">
-              <div className="flex flex-col items-center gap-4">
-                <svg className="animate-spin h-8 w-8 text-violet-100" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                  <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                  <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                </svg>
-                <span className="text-violet-100">Getting AI review...</span>
-              </div>
-            </div>
-          ) : (
-            <div className="prose prose-invert prose-sm max-w-none">
-              <Markdown rehypePlugins={[rehypeHighlight]}>{review}</Markdown>
-            </div>
-          )}
-        </div>
-      </main>
-    </>
-  )
+        </main>
+      </div>
+    </div>
+  );
 }
 
-export default App
+export default App;

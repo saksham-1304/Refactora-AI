@@ -1,1 +1,102 @@
 @import "tailwindcss";
+
+/* Custom scrollbar styles */
+.scrollbar-thin {
+  scrollbar-width: thin;
+}
+
+.scrollbar-thumb-white\/20::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 0.5rem;
+}
+
+.scrollbar-track-transparent::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+.scrollbar-thin::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+.scrollbar-thin::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 0.5rem;
+}
+
+.scrollbar-thin::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+/* Custom prose styles for markdown */
+.prose-invert {
+  --tw-prose-body: rgb(229 231 235);
+  --tw-prose-headings: rgb(255 255 255);
+  --tw-prose-lead: rgb(156 163 175);
+  --tw-prose-links: rgb(139 92 246);
+  --tw-prose-bold: rgb(255 255 255);
+  --tw-prose-counters: rgb(156 163 175);
+  --tw-prose-bullets: rgb(75 85 99);
+  --tw-prose-hr: rgb(55 65 81);
+  --tw-prose-quotes: rgb(229 231 235);
+  --tw-prose-quote-borders: rgb(55 65 81);
+  --tw-prose-captions: rgb(156 163 175);
+  --tw-prose-code: rgb(229 231 235);
+  --tw-prose-pre-code: rgb(229 231 235);
+  --tw-prose-pre-bg: rgb(17 24 39);
+  --tw-prose-th-borders: rgb(55 65 81);
+  --tw-prose-td-borders: rgb(75 85 99);
+}
+
+/* Glass morphism effect */
+.glass {
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Gradient text */
+.gradient-text {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Animation keyframes */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.float {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Code editor enhancements */
+.code-editor {
+  font-feature-settings: 'liga' 1, 'calt' 1;
+}
+
+/* Loading animation */
+@keyframes pulse-ring {
+  0% {
+    transform: scale(0.33);
+  }
+  40%, 50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.33);
+  }
+}
+
+.pulse-ring {
+  animation: pulse-ring 1.25s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+}
