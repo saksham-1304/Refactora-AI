@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { BarChart3, Clock, CheckCircle, AlertTriangle } from 'lucide-react';
+import { HiChartBar, HiClock, HiCheckCircle, HiExclamationTriangle } from 'react-icons/hi2';
 import GlassCard from './GlassCard';
 
 const StatsPanel = ({ stats }) => {
@@ -11,10 +11,9 @@ const StatsPanel = ({ stats }) => {
   };
 
   const currentStats = stats || defaultStats;
-
   const statItems = [
     {
-      icon: BarChart3,
+      icon: HiChartBar,
       label: 'Total Reviews',
       value: currentStats.totalReviews,
       color: 'text-blue-400',
@@ -22,7 +21,7 @@ const StatsPanel = ({ stats }) => {
       borderColor: 'border-blue-500/30'
     },
     {
-      icon: Clock,
+      icon: HiClock,
       label: 'Avg Time',
       value: currentStats.avgTime,
       color: 'text-green-400',
@@ -30,7 +29,7 @@ const StatsPanel = ({ stats }) => {
       borderColor: 'border-green-500/30'
     },
     {
-      icon: AlertTriangle,
+      icon: HiExclamationTriangle,
       label: 'Issues Found',
       value: currentStats.issuesFound,
       color: 'text-orange-400',
@@ -38,7 +37,7 @@ const StatsPanel = ({ stats }) => {
       borderColor: 'border-orange-500/30'
     },
     {
-      icon: CheckCircle,
+      icon: HiCheckCircle,
       label: 'Improvements',
       value: currentStats.improvements,
       color: 'text-purple-400',

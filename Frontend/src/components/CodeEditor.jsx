@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import Editor from "react-simple-code-editor";
 import prism from "prismjs";
-import { Copy, Download, Upload, Code2, Sparkles } from 'lucide-react';
+import { HiClipboardDocument, HiArrowDownTray, HiArrowUpTray, HiCodeBracket, HiSparkles } from 'react-icons/hi2';
 import GlassCard from './GlassCard';
 
 const CodeEditor = ({ content, setContent, onReview, isLoading }) => {
@@ -55,9 +55,8 @@ const CodeEditor = ({ content, setContent, onReview, isLoading }) => {
   return (
     <GlassCard className="h-full flex flex-col relative overflow-hidden">
       {/* Header */}
-      <div className="flex items-center justify-between p-4 border-b border-white/10">
-        <div className="flex items-center gap-3">
-          <Code2 className="w-5 h-5 text-violet-400" />
+      <div className="flex items-center justify-between p-4 border-b border-white/10">        <div className="flex items-center gap-3">
+          <HiCodeBracket className="w-5 h-5 text-violet-400" />
           <h2 className="font-semibold text-white">Code Editor</h2>
         </div>
         
@@ -81,7 +80,7 @@ const CodeEditor = ({ content, setContent, onReview, isLoading }) => {
             className="p-2 rounded-lg bg-white/5 border border-white/10 hover:bg-white/10 transition-colors"
             title="Copy code"
           >
-            <Copy className="w-4 h-4 text-gray-300" />
+            <HiClipboardDocument className="w-4 h-4 text-gray-300" />
           </motion.button>
           
           <motion.button
@@ -91,7 +90,7 @@ const CodeEditor = ({ content, setContent, onReview, isLoading }) => {
             className="p-2 rounded-lg bg-white/5 border border-white/10 hover:bg-white/10 transition-colors"
             title="Download code"
           >
-            <Download className="w-4 h-4 text-gray-300" />
+            <HiArrowDownTray className="w-4 h-4 text-gray-300" />
           </motion.button>
           
           <motion.label
@@ -100,7 +99,7 @@ const CodeEditor = ({ content, setContent, onReview, isLoading }) => {
             className="p-2 rounded-lg bg-white/5 border border-white/10 hover:bg-white/10 transition-colors cursor-pointer"
             title="Upload file"
           >
-            <Upload className="w-4 h-4 text-gray-300" />
+            <HiArrowUpTray className="w-4 h-4 text-gray-300" />
             <input
               type="file"
               accept=".js,.py,.java,.cpp,.ts,.jsx,.tsx"
@@ -164,7 +163,7 @@ const CodeEditor = ({ content, setContent, onReview, isLoading }) => {
           </>
         ) : (
           <>
-            <Sparkles className="w-4 h-4" />
+            <HiSparkles className="w-4 h-4" />
             Review Code
           </>
         )}

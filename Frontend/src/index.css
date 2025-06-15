@@ -1,8 +1,30 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 /* Custom scrollbar styles */
 .scrollbar-thin {
   scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.3) transparent;
+}
+
+.scrollbar-thin::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.scrollbar-thin::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 0.5rem;
+  transition: background-color 0.2s ease;
+}
+
+.scrollbar-thin:hover::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+.scrollbar-thin::-webkit-scrollbar-track {
+  background-color: transparent;
 }
 
 .scrollbar-thumb-white\/20::-webkit-scrollbar-thumb {
@@ -10,42 +32,80 @@
   border-radius: 0.5rem;
 }
 
+.scrollbar-thumb-white\/30::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 0.5rem;
+}
+
 .scrollbar-track-transparent::-webkit-scrollbar-track {
   background-color: transparent;
 }
 
-.scrollbar-thin::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
+/* Enhanced prose styles for markdown with better text colors */
+.prose-invert {
+  --tw-prose-body: rgb(243 244 246);
+  --tw-prose-headings: rgb(255 255 255);
+  --tw-prose-lead: rgb(209 213 219);
+  --tw-prose-links: rgb(139 92 246);
+  --tw-prose-bold: rgb(255 255 255);
+  --tw-prose-counters: rgb(209 213 219);
+  --tw-prose-bullets: rgb(156 163 175);
+  --tw-prose-hr: rgb(75 85 99);
+  --tw-prose-quotes: rgb(243 244 246);
+  --tw-prose-quote-borders: rgb(75 85 99);
+  --tw-prose-captions: rgb(209 213 219);
+  --tw-prose-code: rgb(243 244 246);
+  --tw-prose-pre-code: rgb(243 244 246);
+  --tw-prose-pre-bg: rgb(17 24 39);
+  --tw-prose-th-borders: rgb(75 85 99);
+  --tw-prose-td-borders: rgb(107 114 128);
 }
 
-.scrollbar-thin::-webkit-scrollbar-thumb {
-  background-color: rgba(255, 255, 255, 0.2);
+/* Ensure proper text color inheritance */
+.prose-invert p,
+.prose-invert li,
+.prose-invert span,
+.prose-invert div {
+  color: rgb(243 244 246) !important;
+}
+
+.prose-invert h1,
+.prose-invert h2,
+.prose-invert h3,
+.prose-invert h4,
+.prose-invert h5,
+.prose-invert h6 {
+  color: rgb(255 255 255) !important;
+}
+
+.prose-invert strong,
+.prose-invert b {
+  color: rgb(255 255 255) !important;
+  font-weight: 600;
+}
+
+.prose-invert em,
+.prose-invert i {
+  color: rgb(229 231 235) !important;
+}
+
+.prose-invert code {
+  color: rgb(243 244 246) !important;
+  background-color: rgba(55, 65, 81, 0.5) !important;
+  padding: 0.125rem 0.25rem;
+  border-radius: 0.25rem;
+  font-size: 0.875em;
+}
+
+.prose-invert pre {
+  background-color: rgb(17 24 39) !important;
+  border: 1px solid rgba(75, 85, 99, 0.3);
   border-radius: 0.5rem;
 }
 
-.scrollbar-thin::-webkit-scrollbar-track {
-  background-color: transparent;
-}
-
-/* Custom prose styles for markdown */
-.prose-invert {
-  --tw-prose-body: rgb(229 231 235);
-  --tw-prose-headings: rgb(255 255 255);
-  --tw-prose-lead: rgb(156 163 175);
-  --tw-prose-links: rgb(139 92 246);
-  --tw-prose-bold: rgb(255 255 255);
-  --tw-prose-counters: rgb(156 163 175);
-  --tw-prose-bullets: rgb(75 85 99);
-  --tw-prose-hr: rgb(55 65 81);
-  --tw-prose-quotes: rgb(229 231 235);
-  --tw-prose-quote-borders: rgb(55 65 81);
-  --tw-prose-captions: rgb(156 163 175);
-  --tw-prose-code: rgb(229 231 235);
-  --tw-prose-pre-code: rgb(229 231 235);
-  --tw-prose-pre-bg: rgb(17 24 39);
-  --tw-prose-th-borders: rgb(55 65 81);
-  --tw-prose-td-borders: rgb(75 85 99);
+.prose-invert pre code {
+  background-color: transparent !important;
+  color: rgb(243 244 246) !important;
 }
 
 /* Glass morphism effect */
@@ -99,4 +159,14 @@
 
 .pulse-ring {
   animation: pulse-ring 1.25s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+}
+
+/* Smooth scrolling for the review section */
+.review-content {
+  scroll-behavior: smooth;
+}
+
+/* Custom focus styles for better accessibility */
+.scrollbar-thin:focus-within::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.6);
 }
