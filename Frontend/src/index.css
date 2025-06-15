@@ -2,6 +2,29 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Base body styles */
+@layer base {
+
+  html,
+  body {
+    min-height: 100vh;
+    width: 100%;
+  }
+
+  body {
+    background: linear-gradient(135deg, #0f172a 0%, #581c87 50%, #0f172a 100%);
+    transition: background 0.3s ease;
+  }
+
+  body.light {
+    background: linear-gradient(135deg, #f9fafb 0%, #dbeafe 50%, #f9fafb 100%) !important;
+  }
+
+  body.dark {
+    background: linear-gradient(135deg, #0f172a 0%, #581c87 50%, #0f172a 100%) !important;
+  }
+}
+
 /* Custom scrollbar styles */
 .scrollbar-thin {
   scrollbar-width: thin;
@@ -108,6 +131,85 @@
   color: rgb(243 244 246) !important;
 }
 
+/* Light mode scrollbar styles */
+.light .scrollbar-thin {
+  scrollbar-color: rgba(0, 0, 0, 0.3) transparent;
+}
+
+.light .scrollbar-thin::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.light .scrollbar-thin:hover::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+/* Light mode prose styles */
+.prose-light {
+  --tw-prose-body: rgb(31 41 55);
+  --tw-prose-headings: rgb(17 24 39);
+  --tw-prose-lead: rgb(75 85 99);
+  --tw-prose-links: rgb(139 92 246);
+  --tw-prose-bold: rgb(17 24 39);
+  --tw-prose-counters: rgb(75 85 99);
+  --tw-prose-bullets: rgb(107 114 128);
+  --tw-prose-hr: rgb(209 213 219);
+  --tw-prose-quotes: rgb(31 41 55);
+  --tw-prose-quote-borders: rgb(209 213 219);
+  --tw-prose-captions: rgb(75 85 99);
+  --tw-prose-code: rgb(31 41 55);
+  --tw-prose-pre-code: rgb(31 41 55);
+  --tw-prose-pre-bg: rgb(249 250 251);
+  --tw-prose-th-borders: rgb(209 213 219);
+  --tw-prose-td-borders: rgb(229 231 235);
+}
+
+.prose-light p,
+.prose-light li,
+.prose-light span,
+.prose-light div {
+  color: rgb(31 41 55) !important;
+}
+
+.prose-light h1,
+.prose-light h2,
+.prose-light h3,
+.prose-light h4,
+.prose-light h5,
+.prose-light h6 {
+  color: rgb(17 24 39) !important;
+}
+
+.prose-light strong,
+.prose-light b {
+  color: rgb(17 24 39) !important;
+  font-weight: 600;
+}
+
+.prose-light em,
+.prose-light i {
+  color: rgb(55 65 81) !important;
+}
+
+.prose-light code {
+  color: rgb(31 41 55) !important;
+  background-color: rgba(229, 231, 235, 0.5) !important;
+  padding: 0.125rem 0.25rem;
+  border-radius: 0.25rem;
+  font-size: 0.875em;
+}
+
+.prose-light pre {
+  background-color: rgb(249 250 251) !important;
+  border: 1px solid rgba(209, 213, 219, 0.5);
+  border-radius: 0.5rem;
+}
+
+.prose-light pre code {
+  background-color: transparent !important;
+  color: rgb(31 41 55) !important;
+}
+
 /* Glass morphism effect */
 .glass {
   backdrop-filter: blur(16px) saturate(180%);
@@ -126,9 +228,12 @@
 
 /* Animation keyframes */
 @keyframes float {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: translateY(0px);
   }
+
   50% {
     transform: translateY(-10px);
   }
@@ -143,14 +248,178 @@
   font-feature-settings: 'liga' 1, 'calt' 1;
 }
 
+/* Enhanced code editor styles for better theme support */
+.code-editor-container {
+  position: relative;
+  height: 100%;
+  overflow: hidden;
+}
+
+.code-editor-wrapper {
+  height: 100%;
+  overflow: auto;
+}
+
+/* PrismJS theme overrides for light mode */
+.light .token.comment,
+.light .token.prolog,
+.light .token.doctype,
+.light .token.cdata {
+  color: #6a737d !important;
+}
+
+.light .token.punctuation {
+  color: #24292e !important;
+}
+
+.light .token.property,
+.light .token.tag,
+.light .token.boolean,
+.light .token.number,
+.light .token.constant,
+.light .token.symbol,
+.light .token.deleted {
+  color: #005cc5 !important;
+}
+
+.light .token.selector,
+.light .token.attr-name,
+.light .token.string,
+.light .token.char,
+.light .token.builtin,
+.light .token.inserted {
+  color: #032f62 !important;
+}
+
+.light .token.operator,
+.light .token.entity,
+.light .token.url,
+.light .language-css .token.string,
+.light .style .token.string {
+  color: #d73a49 !important;
+}
+
+.light .token.atrule,
+.light .token.attr-value,
+.light .token.keyword {
+  color: #d73a49 !important;
+}
+
+.light .token.function,
+.light .token.class-name {
+  color: #6f42c1 !important;
+}
+
+.light .token.regex,
+.light .token.important,
+.light .token.variable {
+  color: #e36209 !important;
+}
+
+/* Enhanced dark mode PrismJS styles */
+.dark .token.comment,
+.dark .token.prolog,
+.dark .token.doctype,
+.dark .token.cdata {
+  color: #8b9dc3 !important;
+}
+
+.dark .token.punctuation {
+  color: #f8f8f2 !important;
+}
+
+.dark .token.property,
+.dark .token.tag,
+.dark .token.constant,
+.dark .token.symbol,
+.dark .token.deleted {
+  color: #f92672 !important;
+}
+
+.dark .token.boolean,
+.dark .token.number {
+  color: #ae81ff !important;
+}
+
+.dark .token.selector,
+.dark .token.attr-name,
+.dark .token.string,
+.dark .token.char,
+.dark .token.builtin,
+.dark .token.inserted {
+  color: #a6e22e !important;
+}
+
+.dark .token.operator,
+.dark .token.entity,
+.dark .token.url,
+.dark .language-css .token.string,
+.dark .style .token.string {
+  color: #f8f8f2 !important;
+}
+
+.dark .token.atrule,
+.dark .token.attr-value,
+.dark .token.keyword {
+  color: #f92672 !important;
+}
+
+.dark .token.function,
+.dark .token.class-name {
+  color: #66d9ef !important;
+}
+
+.dark .token.regex,
+.dark .token.important,
+.dark .token.variable {
+  color: #fd971f !important;
+}
+
+/* Editor textarea specific styles */
+.code-editor textarea {
+  font-family: 'Fira Code', 'JetBrains Mono', monospace !important;
+  font-size: 14px !important;
+  line-height: 1.6 !important;
+  tab-size: 2 !important;
+  -moz-tab-size: 2 !important;
+}
+
+/* Ensure proper text selection colors */
+.dark .code-editor ::selection {
+  background-color: rgba(255, 255, 255, 0.2) !important;
+}
+
+.light .code-editor ::selection {
+  background-color: rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Fix for editor content area */
+.code-editor pre,
+.code-editor textarea {
+  margin: 0 !important;
+  padding: 20px !important;
+  border: none !important;
+  outline: none !important;
+  background: transparent !important;
+  min-height: calc(100vh - 300px) !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+  white-space: pre-wrap !important;
+  word-wrap: break-word !important;
+  overflow-wrap: break-word !important;
+}
+
 /* Loading animation */
 @keyframes pulse-ring {
   0% {
     transform: scale(0.33);
   }
-  40%, 50% {
+
+  40%,
+  50% {
     opacity: 1;
   }
+
   100% {
     opacity: 0;
     transform: scale(1.33);
@@ -169,4 +438,8 @@
 /* Custom focus styles for better accessibility */
 .scrollbar-thin:focus-within::-webkit-scrollbar-thumb {
   background-color: rgba(255, 255, 255, 0.6);
+}
+
+.light .scrollbar-thin:focus-within::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.6);
 }

@@ -23,7 +23,8 @@
     "rehype-highlight": "^7.0.2",
     "tailwindcss": "^3.4.0",
     "autoprefixer": "^10.4.16",
-    "postcss": "^8.4.32"
+    "postcss": "^8.4.32",
+    "lucide-react": "^0.32.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.19.0",
