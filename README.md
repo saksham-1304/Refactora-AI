@@ -1,307 +1,344 @@
-# 🤖 AI-Code-Reviewer
+# 🤖 Refactora AI - Code Reviewer
 
-A modern, full-stack web application that leverages Google's Gemini AI to provide intelligent code reviews and feedback. Get instant, expert-level code analysis with suggestions for improvements, bug detection, and best practices - all in your browser.
+<div align="center">
 
-## 📋 Table of Contents
+![Refactora AI Logo](https://img.shields.io/badge/Refactora-AI-blueviolet?style=for-the-badge&logo=robot)
 
-- [🔍 Overview](#overview)
-- [✨ Features](#features)  
-- [💻 Tech Stack](#tech-stack)
-- [🏗️ Architecture](#architecture)
-- [🚀 Getting Started](#getting-started)
-- [📁 Project Structure](#project-structure)
-- [📚 API Documentation](#api-documentation)
-- [🔧 Environment Setup](#environment-setup)
-- [🔄 Development Workflow](#development-workflow)
-- [🚀 Deployment](#deployment)
-- [👥 Contributing](#contributing)
-- [📄 License](#license)
+**🚀 AI-Powered Code Review Tool using Google Gemini AI**
 
-## Overview
+[![React](https://img.shields.io/badge/React-18.3.1-61DAFB?style=flat&logo=react)](https://reactjs.org/)
+[![Node.js](https://img.shields.io/badge/Node.js-Express-339933?style=flat&logo=node.js)](https://nodejs.org/)
+[![Google Gemini](https://img.shields.io/badge/Google-Gemini%202.0-4285F4?style=flat&logo=google)](https://ai.google.dev/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind-CSS-38B2AC?style=flat&logo=tailwind-css)](https://tailwindcss.com/)
 
-AI-Code-Reviewer is designed to help developers improve their code quality by providing instant AI-powered code reviews. The application features a clean, modern interface with a split-pane design - code editor on the left and AI review results on the right. Simply paste your code, click "Review", and receive detailed feedback within seconds.
+[🌟 Live Demo](https://ai-code-reviewer.vercel.app/) | [📚 Documentation](#-documentation) | [🚀 Quick Start](#-quick-start)
 
-## Features
+</div>
 
-- 🖋️ **Interactive Code Editor** - Syntax highlighting with PrismJS
-- 🤖 **AI-Powered Reviews** - Leverages Google Gemini 2.0 Flash model
-- 📊 **Comprehensive Analysis** - Code quality, bugs, performance, security
-- 🎨 **Modern UI/UX** - Responsive design with Tailwind CSS
-- ⚡ **Real-time Feedback** - Instant loading states and error handling
-- 📱 **Mobile Responsive** - Works seamlessly on all devices
-- 🔄 **Scrollable Interface** - Custom scrollbars for both editor and review panes
-- 🎯 **Expert-Level Reviews** - 7+ years experience equivalent feedback
+---
 
-## Tech Stack
+## 📖 Table of Contents
 
-### Frontend Stack
-- **React 19** - Latest React with modern hooks and features
-- **Vite 6** - Next-generation frontend tooling for fast development
-- **Tailwind CSS 4** - Utility-first CSS framework for rapid styling
-- **React Simple Code Editor** - Lightweight code editor with syntax highlighting
-- **PrismJS** - Syntax highlighting for multiple programming languages
-- **React Markdown** - Render markdown responses from AI
-- **Rehype Highlight** - Code syntax highlighting in markdown
-- **Axios** - Promise-based HTTP client for API requests
+- [🌟 Features](#-features)
+- [🎬 Demo](#-demo)
+- [🏗️ Architecture](#️-architecture)
+- [🚀 Quick Start](#-quick-start)
+- [⚙️ Installation](#️-installation)
+- [🔧 Configuration](#-configuration)
+- [📱 Usage](#-usage)
+- [🛠️ Tech Stack](#️-tech-stack)
+- [📂 Project Structure](#-project-structure)
+- [🤝 Contributing](#-contributing)
+- [📄 License](#-license)
 
-### Backend Stack
-- **Node.js** - JavaScript runtime environment
-- **Express.js** - Fast, minimalist web framework
-- **Google Generative AI** - Integration with Gemini 2.0 Flash model
-- **CORS** - Cross-Origin Resource Sharing middleware
-- **dotenv** - Environment variable management
+---
 
-### Development Tools
-- **ESLint** - Code linting and formatting
-- **Nodemon** - Auto-restart server during development
-- **Git** - Version control system
+## 🌟 Features
 
-## Architecture
+### 🔍 **Intelligent Code Analysis**
+- **Multi-language Support**: JavaScript, Python, Java, C++, TypeScript
+- **Real-time Review**: Instant AI-powered code analysis
+- **Comprehensive Feedback**: Detailed insights on code quality, bugs, and improvements
 
-```
-┌─────────────────┐    HTTP/HTTPS    ┌─────────────────┐
-│   React Frontend │ ◄──────────────► │  Express Backend │
-│   (Port 5173)   │                  │   (Port 5000)   │
-└─────────────────┘                  └─────────────────┘
-         │                                     │
-         │                                     │
-         ▼                                     ▼
-┌─────────────────┐                  ┌─────────────────┐
-│   Code Editor   │                  │  Google Gemini  │
-│   + UI/UX       │                  │   AI Service    │
-└─────────────────┘                  └─────────────────┘
-```
+### 🎨 **Modern User Experience**
+- **Dark/Light Theme**: Seamless theme switching with system preference detection
+- **Responsive Design**: Perfect experience across desktop, tablet, and mobile
+- **Glass Morphism UI**: Beautiful, modern interface with smooth animations
+- **Code Syntax Highlighting**: Professional code editor with Prism.js integration
 
-## Getting Started
+### 📊 **Analytics & Insights**
+- **Review Statistics**: Track total reviews, average time, issues found
+- **Performance Metrics**: Real-time analysis of code quality improvements
+- **Export Options**: Download reviews in Markdown format
 
-### Prerequisites
+### 🚀 **Developer Features**
+- **File Upload**: Import code files directly into the editor
+- **Copy/Share**: Easy code and review sharing capabilities
+- **Regenerate Reviews**: Get fresh perspectives on your code
+- **Professional Editor**: Feature-rich code editor with line numbers and syntax highlighting
 
-Ensure you have the following installed:
-- **Node.js** (v18.0.0 or higher)
-- **npm** (v9.0.0 or higher) or **yarn**
-- **Git** for version control
-- **Google Gemini API Key** (get from [Google AI Studio](https://makersuite.google.com/app/apikey))
+---
 
-### Quick Setup
+## 🎬 Demo
 
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/yourusername/AI-Code-Reviewer.git
-   cd AI-Code-Reviewer
-   ```
+<div align="center">
 
-2. **Install dependencies for both frontend and backend**
-   ```bash
-   # Install backend dependencies
-   cd BackEnd
-   npm install
-   
-   # Install frontend dependencies
-   cd ../Frontend
-   npm install
-   ```
+### 🖥️ Desktop Experience
+*Beautiful glass morphism design with professional code editor*
 
-3. **Environment Configuration**
-   ```bash
-   # Navigate to backend directory
-   cd ../BackEnd
-   
-   # Create environment file
-   # Add your Google Gemini API key
-   echo "PORT=5000" > .env
-   echo "GOOGLE_GEMINI_KEY=your_api_key_here" >> .env
-   ```
+### 📱 Mobile Responsive
+*Optimized for all devices with touch-friendly interface*
 
-4. **Start the application**
-   ```bash
-   # Terminal 1: Start Backend Server
-   cd BackEnd
-   npm run dev
-   
-   # Terminal 2: Start Frontend Development Server
-   cd Frontend
-   npm run dev
-   ```
+### 🌙 Theme Switching
+*Seamless dark/light mode transition*
 
-5. **Access the application**
-   - Frontend: http://localhost:5173
-   - Backend API: http://localhost:5000
+</div>
 
-## Project Structure
+---
 
-```
-AI-Code-Reviewer/
-├── 📂 Frontend/                 # React application
-│   ├── 📂 public/              # Static assets
-│   ├── 📂 src/                 # Source code
-│   │   ├── App.jsx             # Main application component
-│   │   ├── main.jsx            # Application entry point
-│   │   └── index.css           # Global styles
-│   ├── package.json            # Frontend dependencies
-│   ├── vite.config.js          # Vite configuration
-│   ├── index.html              # HTML template
-│   └── README.md               # Frontend documentation
-├── 📂 BackEnd/                 # Node.js/Express server
-│   ├── 📂 src/                 # Source code
-│   │   ├── 📂 controllers/     # Request handlers
-│   │   │   └── ai.controller.js
-│   │   ├── 📂 routes/          # API routes
-│   │   │   └── ai.routes.js
-│   │   ├── 📂 services/        # Business logic
-│   │   │   └── ai.service.js
-│   │   └── app.js              # Express app configuration
-│   ├── server.js               # Server entry point
-│   ├── package.json            # Backend dependencies
-│   └── README.md               # Backend documentation
-├── .gitignore                  # Git ignore rules
-└── README.md                   # Main project documentation
+## 🏗️ Architecture
+
+```mermaid
+graph TB
+    A[Frontend - React + Vite] --> B[Backend - Node.js + Express]
+    B --> C[Google Gemini AI API]
+    A --> D[Local Storage - Stats & Preferences]
+    
+    subgraph "Frontend Stack"
+        E[React 18.3.1]
+        F[Tailwind CSS]
+        G[Framer Motion]
+        H[React Simple Code Editor]
+    end
+    
+    subgraph "Backend Stack"
+        I[Express.js]
+        J[Google Generative AI SDK]
+        K[CORS Middleware]
+    end
 ```
 
-## API Documentation
+### 🔄 **Request Flow**
+1. **User Input** → Code entered in editor
+2. **Frontend** → Sends code to backend API
+3. **Backend** → Processes request with Google Gemini
+4. **AI Analysis** → Comprehensive code review generated
+5. **Response** → Formatted review displayed to user
 
-### Code Review Endpoint
+---
 
-**POST** `/ai/get-review`
+## 🚀 Quick Start
 
-**Request Body:**
-```json
-{
-  "code": "function example() {\n  return 'Hello World';\n}"
-}
-```
+### 📋 Prerequisites
+- **Node.js** (v18 or higher)
+- **npm** or **yarn**
+- **Google Gemini API Key** ([Get yours here](https://ai.google.dev/))
 
-**Response:**
-```markdown
-# Code Review Results
-
-## 🔍 Analysis Overview
-Your code is functional but could benefit from improvements...
-
-## ❌ Issues Found
-- Missing error handling
-- No input validation
-
-## ✅ Recommendations
-- Add try-catch blocks
-- Implement proper validation
-...
-```
-
-**Status Codes:**
-- `200` - Success
-- `400` - Bad Request (missing code)
-- `500` - Internal Server Error
-
-## Environment Setup
-
-### Backend Environment Variables
-
-Create a `.env` file in the `BackEnd` directory:
+### ⚡ One-Click Setup
 
 ```bash
-# Server Configuration
+# Clone the repository
+git clone https://github.com/saksham-1304/AI-Code-Reviewer.git
+cd AI-Code-Reviewer
+
+# Install dependencies for both frontend and backend
+npm run install-all
+
+# Set up environment variables
+cp BackEnd/.env.example BackEnd/.env
+# Add your GOOGLE_GEMINI_KEY to BackEnd/.env
+
+# Start development servers
+npm run dev
+```
+
+🎉 **That's it!** Your application will be running at:
+- **Frontend**: [http://localhost:5173](http://localhost:5173)
+- **Backend**: [http://localhost:5000](http://localhost:5000)
+
+---
+
+## ⚙️ Installation
+
+### 🔧 Manual Setup
+
+<details>
+<summary>📦 <strong>Step-by-step Installation</strong></summary>
+
+#### 1️⃣ Clone Repository
+```bash
+git clone https://github.com/saksham-1304/AI-Code-Reviewer.git
+cd AI-Code-Reviewer
+```
+
+#### 2️⃣ Backend Setup
+```bash
+cd BackEnd
+npm install
+```
+
+#### 3️⃣ Frontend Setup
+```bash
+cd ../Frontend
+npm install
+```
+
+#### 4️⃣ Environment Configuration
+```bash
+# In BackEnd folder
+cp .env.example .env
+```
+
+Edit `.env` file:
+```env
+GOOGLE_GEMINI_KEY=your_actual_api_key_here
 PORT=5000
-
-# Google Gemini AI Configuration
-GOOGLE_GEMINI_KEY=your_api_key_here
 ```
 
-### Getting Google Gemini API Key
+#### 5️⃣ Start Development Servers
 
-1. Visit [Google AI Studio](https://makersuite.google.com/app/apikey)
-2. Sign in with your Google account
-3. Create a new API key
-4. Copy the key to your `.env` file
-
-## Development Workflow
-
-### Frontend Development
+**Using the batch script (Windows):**
 ```bash
-cd Frontend
-npm run dev          # Start development server
-npm run build        # Build for production
-npm run preview      # Preview production build
-npm run lint         # Run ESLint
+# From project root
+start-dev.bat
 ```
 
-### Backend Development
+**Manual start:**
 ```bash
+# Terminal 1 - Backend
 cd BackEnd
-npm run dev          # Start with nodemon (auto-restart)
-npm start            # Start production server
-```
+npm run dev
 
-## Deployment
-
-### Frontend (Vercel/Netlify)
-```bash
+# Terminal 2 - Frontend
 cd Frontend
-npm run build
-# Deploy dist/ folder to your hosting provider
+npm run dev
 ```
 
-### Backend (Railway/Heroku/DigitalOcean)
-```bash
-cd BackEnd
-# Set environment variables on your hosting platform
-# Deploy using git or platform-specific CLI
+</details>
+
+---
+
+## 🔧 Configuration
+
+### 🔑 **API Keys**
+1. Visit [Google AI Studio](https://ai.google.dev/)
+2. Create a new API key
+3. Add to `BackEnd/.env`:
+   ```env
+   GOOGLE_GEMINI_KEY=your_api_key_here
+   ```
+
+### 🎛️ **Environment Variables**
+| Variable | Description | Default |
+|----------|-------------|---------|
+| `GOOGLE_GEMINI_KEY` | Google Gemini AI API Key | Required |
+| `PORT` | Backend server port | 5000 |
+
+### ⚙️ **Frontend Configuration**
+- **Theme**: Auto-detects system preference
+- **Port**: 5173 (Vite default)
+- **API Base URL**: `http://localhost:5000`
+
+---
+
+## 📱 Usage
+
+### 🎯 **Getting Started**
+
+1. **📝 Enter Code**: Paste or type your code in the editor
+2. **🔍 Select Language**: Choose from JavaScript, Python, Java, C++, TypeScript
+3. **🚀 Review**: Click "Review Code" button
+4. **📊 Analyze**: Get comprehensive AI feedback
+5. **📥 Export**: Download or share your review
+
+### 💡 **Pro Tips**
+
+- **🔄 Regenerate**: Get different perspectives by regenerating reviews
+- **📁 File Upload**: Drag and drop code files directly
+- **🎨 Theme Toggle**: Switch between dark/light modes anytime
+- **📊 Track Progress**: View your coding improvement statistics
+
+---
+
+## 🛠️ Tech Stack
+
+### 🎨 **Frontend**
+| Technology | Version | Purpose |
+|------------|---------|---------|
+| **React** | 18.3.1 | UI Framework |
+| **Vite** | 6.1.0 | Build Tool & Dev Server |
+| **Tailwind CSS** | 3.4.0 | Styling Framework |
+| **Framer Motion** | 11.0.0 | Animations |
+| **React Simple Code Editor** | 0.14.1 | Code Editor |
+| **Prism.js** | 1.29.0 | Syntax Highlighting |
+| **React Markdown** | 9.0.3 | Markdown Rendering |
+| **Axios** | 1.7.9 | HTTP Client |
+
+### ⚙️ **Backend**
+| Technology | Version | Purpose |
+|------------|---------|---------|
+| **Node.js** | - | Runtime Environment |
+| **Express** | 4.21.2 | Web Framework |
+| **Google Generative AI** | 0.21.0 | AI Integration |
+| **CORS** | 2.8.5 | Cross-Origin Resource Sharing |
+| **dotenv** | 16.4.7 | Environment Variables |
+
+---
+
+## 📂 Project Structure
+
+```
+📁 AI-Code-Reviewer/
+├── 📁 BackEnd/
+│   ├── 📁 src/
+│   │   ├── 📁 controllers/
+│   │   │   └── 📄 ai.controller.js
+│   │   ├── 📁 routes/
+│   │   │   └── 📄 ai.routes.js
+│   │   ├── 📁 services/
+│   │   │   └── 📄 ai.service.js
+│   │   └── 📄 app.js
+│   ├── 📄 server.js
+│   ├── 📄 package.json
+│   └── 📄 .env
+├── 📁 Frontend/
+│   ├── 📁 src/
+│   │   ├── 📁 components/
+│   │   │   ├── 📄 CodeEditor.jsx
+│   │   │   ├── 📄 ReviewPanel.jsx
+│   │   │   ├── 📄 Header.jsx
+│   │   │   ├── 📄 StatsPanel.jsx
+│   │   │   └── 📄 GlassCard.jsx
+│   │   ├── 📁 contexts/
+│   │   │   └── 📄 ThemeContext.jsx
+│   │   ├── 📄 App.jsx
+│   │   ├── 📄 main.jsx
+│   │   └── 📄 index.css
+│   ├── 📄 index.html
+│   ├── 📄 package.json
+│   ├── 📄 vite.config.js
+│   └── 📄 tailwind.config.js
+├── 📄 start-dev.bat
+└── 📄 README.md
 ```
 
-### Environment Variables for Production
-- Set `NODE_ENV=production`
-- Update CORS origins for production domains
-- Use production-grade Google Gemini API limits
+---
 
-## Contributing
+## 🤝 Contributing
 
-We welcome contributions! Please follow these steps:
+We welcome contributions! Please see our contributing guidelines:
 
-1. **Fork the repository**
-2. **Create a feature branch**
-   ```bash
-   git checkout -b feature/amazing-feature
-   ```
-3. **Make your changes**
-4. **Follow coding standards**
-5. **Test your changes**
-6. **Commit with descriptive messages**
-   ```bash
-   git commit -m "feat: add amazing new feature"
-   ```
-7. **Push to your fork**
-   ```bash
-   git push origin feature/amazing-feature
-   ```
-8. **Open a Pull Request**
+### 🚀 **Quick Contribution Steps**
 
-### Contribution Guidelines
-- Follow existing code style
-- Add tests for new features
-- Update documentation
-- Ensure all tests pass
-- Write clear commit messages
+1. **🍴 Fork** the repository
+2. **🌿 Create** a feature branch: `git checkout -b feature/amazing-feature`
+3. **💻 Commit** your changes: `git commit -m 'Add amazing feature'`
+4. **📤 Push** to branch: `git push origin feature/amazing-feature`
+5. **🔄 Create** a Pull Request
 
-## License
+### 📋 **Development Guidelines**
 
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+- Follow the existing code style
+- Write meaningful commit messages
+- Test your changes thoroughly
+- Update documentation as needed
 
-## 🆘 Support
+---
 
-- 📧 **Email**: sakshamsinghrathore1304@gmail.com
-- 🐛 **Issues**: [GitHub Issues](https://github.com/sakshamsinghrathore/AI-Code-Reviewer/issues)
-- 💬 **Discussions**: [GitHub Discussions](https://github.com/sakshamsinghrathore/AI-Code-Reviewer/discussions)
+## 📄 License
 
-## 🙏 Acknowledgments
-
-- **Google Gemini AI** for providing the AI model
-- **React Team** for the amazing framework
-- **Vite Team** for the fast build tool
-- **Tailwind CSS** for the utility-first CSS framework
-- **Open Source Community** for the incredible tools and libraries
+This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) file for details.
 
 ---
 
 <div align="center">
-  <strong>Made with ❤️ by developers, for developers</strong><br>
-  <em>Created and maintained by sakshamsinghrathore1304@gmail.com</em>
+
+### 🌟 **Show Your Support**
+
+If this project helped you, please consider giving it a ⭐ on GitHub!
+
+**Made with ❤️ by [Saksham Singh Rathore](https://github.com/saksham-1304)**
+
+[🐛 Report Bug](https://github.com/saksham-1304/AI-Code-Reviewer/issues) | [💡 Request Feature](https://github.com/saksham-1304/AI-Code-Reviewer/issues) | [💬 Discussion](https://github.com/saksham-1304/AI-Code-Reviewer/discussions)
+
 </div>
