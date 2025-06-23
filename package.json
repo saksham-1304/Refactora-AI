@@ -1,0 +1,19 @@
+{
+  "name": "ai-code-reviewer",
+  "version": "1.0.0",
+  "description": "AI-Powered Code Review Tool using Google Gemini AI",
+  "main": "index.js",
+  "scripts": {
+    "build": "cd Frontend && npm install && npm run build",
+    "install-all": "cd Frontend && npm install && cd ../BackEnd && npm install",
+    "dev": "concurrently \"cd BackEnd && npm run dev\" \"cd Frontend && npm run dev\"",
+    "start": "cd BackEnd && npm start",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": ["ai", "code-review", "gemini", "react", "node"],
+  "author": "Saksham Singh Rathore",
+  "license": "MIT",
+  "devDependencies": {
+    "concurrently": "^7.6.0"
+  }
+}
