@@ -10,21 +10,22 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "ai-code-reviewer": "file:..",
+    "autoprefixer": "^10.4.16",
     "axios": "^1.7.9",
     "framer-motion": "^11.0.0",
     "highlight.js": "^11.11.1",
-    "react-icons": "^5.0.1",
+    "lucide-react": "^0.460.0",
     "marked": "^15.0.6",
+    "postcss": "^8.4.32",
     "prismjs": "^1.29.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
+    "react-icons": "^5.0.1",
     "react-markdown": "^9.0.3",
     "react-simple-code-editor": "^0.14.1",
     "rehype-highlight": "^7.0.2",
-    "tailwindcss": "^3.4.0",
-    "autoprefixer": "^10.4.16",
-    "postcss": "^8.4.32",
-    "lucide-react": "^0.32.0"
+    "tailwindcss": "^3.4.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.19.0",
@@ -36,6 +37,7 @@
     "eslint-plugin-react-hooks": "^5.0.0",
     "eslint-plugin-react-refresh": "^0.4.18",
     "globals": "^15.14.0",
+    "terser": "^5.43.1",
     "vite": "^6.1.0"
   }
 }
