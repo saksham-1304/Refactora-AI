@@ -6,9 +6,16 @@ const cors = require('cors')
 const app = express()
 
 // Configure CORS for production and development
+const corsOptions = {
+  origin: [
+    'http://localhost:5173', // Local development
+    'https://refactora-ai.onrender.com', // Production domain
+    'https://ai-code-reviewer.vercel.app' // If using Vercel for frontend
+  ],
+  credentials: true
+};
 
-
-app.use(cors())
+app.use(cors(corsOptions))
 app.use(express.json())
 
 // Serve static files from the Frontend dist directory

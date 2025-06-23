@@ -53,7 +53,8 @@ console.log(calculateFactorial(5)); // Output: 120`);
     const startTime = Date.now();
 
     try {
-      const response = await axios.post('http://localhost:5000/ai/get-review', {
+      // Use the deployed backend URL instead of localhost
+      const response = await axios.post('https://refactora-ai.onrender.com/ai/get-review', {
         code: content
       });
 
@@ -75,7 +76,7 @@ console.log(calculateFactorial(5)); // Output: 120`);
 
     } catch (error) {
       console.error('Error getting review:', error);
-      setReview('❌ **Error**: Unable to get review. Please check if the backend server is running and try again.');
+      setReview('❌ **Error**: Unable to get review. Please check your internet connection and try again.');
     } finally {
       setIsLoading(false);
     }
