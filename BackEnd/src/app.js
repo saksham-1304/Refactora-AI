@@ -4,11 +4,14 @@ const cors = require('cors')
 
 const app = express()
 
+// Configure CORS for production and development
+
+
 app.use(cors())
 app.use(express.json())
 
 app.get('/', (req, res) => {
-    res.send('Hello World')
+    res.json({ message: 'AI Code Reviewer API is running!' })
 })
 
 app.use('/ai', aiRoutes)

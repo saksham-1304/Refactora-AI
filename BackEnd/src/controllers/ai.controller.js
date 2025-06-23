@@ -8,7 +8,7 @@ async function getReview(req, res) {
         return res.status(400).send("Code is required");
     }
     const response = await generateContent(code);
-    res.send(response);
+    res.status(200).send(response);
 
 }
 module.exports = {
