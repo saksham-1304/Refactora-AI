@@ -12,8 +12,8 @@ const Header = () => {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
       className={`flex items-center justify-between p-6 backdrop-blur-xl border-b transition-colors duration-300 ${isDark
-          ? 'bg-white/5 border-white/10'
-          : 'bg-black/5 border-black/10'
+        ? 'bg-white/5 border-white/10'
+        : 'bg-black/5 border-black/10'
         }`}
     >
       <div className="flex items-center gap-3">
@@ -22,10 +22,10 @@ const Header = () => {
         </div>
         <div>
           <h1 className={`text-xl font-bold bg-gradient-to-r bg-clip-text text-transparent transition-colors duration-300 ${isDark
-              ? 'from-white to-gray-300'
-              : 'from-gray-900 to-gray-600'
+            ? 'from-white to-gray-300'
+            : 'from-gray-900 to-gray-600'
             }`}>
-            AI Code Reviewer
+            Refactora AI
           </h1>
           <p className={`text-xs transition-colors duration-300 ${isDark ? 'text-gray-400' : 'text-gray-600'
             }`}>
@@ -48,8 +48,8 @@ const Header = () => {
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
           className={`p-2 rounded-xl backdrop-blur-sm border transition-colors duration-300 ${isDark
-              ? 'bg-white/5 border-white/10 hover:bg-white/10'
-              : 'bg-black/5 border-black/10 hover:bg-black/10'
+            ? 'bg-white/5 border-white/10 hover:bg-white/10'
+            : 'bg-black/5 border-black/10 hover:bg-black/10'
             }`}
           title={`Switch to ${isDark ? 'light' : 'dark'} mode`}
         >
@@ -63,13 +63,13 @@ const Header = () => {
         </motion.button>
 
         <motion.a
-          href="https://github.com/saksham-1304/AI-Code-Reviewer"
+          href="https://github.com/saksham-1304/Refactora-AI"
           target="_blank"
           rel="noopener noreferrer"
           whileHover={{ scale: 1.05 }}
           className={`p-2 rounded-xl backdrop-blur-sm border transition-colors duration-300 ${isDark
-              ? 'bg-white/5 border-white/10 hover:bg-white/10'
-              : 'bg-black/5 border-black/10 hover:bg-black/10'
+            ? 'bg-white/5 border-white/10 hover:bg-white/10'
+            : 'bg-black/5 border-black/10 hover:bg-black/10'
             }`}
         >
           <FaGithub className={`w-5 h-5 transition-colors duration-300 ${isDark ? 'text-gray-300' : 'text-gray-700'

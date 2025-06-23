@@ -70,8 +70,8 @@ const CodeEditor = ({ content, setContent, onReview, isLoading }) => {
             value={language}
             onChange={(e) => setLanguage(e.target.value)}
             className={`px-3 py-1.5 rounded-lg border text-sm focus:outline-none focus:ring-2 focus:ring-violet-500/50 transition-colors duration-300 ${isDark
-                ? 'bg-white/5 border-white/10 text-white'
-                : 'bg-black/5 border-black/10 text-gray-900'
+              ? 'bg-white/5 border-white/10 text-white'
+              : 'bg-black/5 border-black/10 text-gray-900'
               }`}
           >
             {languages.map(lang => (
@@ -86,8 +86,8 @@ const CodeEditor = ({ content, setContent, onReview, isLoading }) => {
             whileTap={{ scale: 0.95 }}
             onClick={copyToClipboard}
             className={`p-2 rounded-lg border transition-colors duration-300 ${isDark
-                ? 'bg-white/5 border-white/10 hover:bg-white/10'
-                : 'bg-black/5 border-black/10 hover:bg-black/10'
+              ? 'bg-white/5 border-white/10 hover:bg-white/10'
+              : 'bg-black/5 border-black/10 hover:bg-black/10'
               }`}
             title="Copy code"
           >
@@ -100,8 +100,8 @@ const CodeEditor = ({ content, setContent, onReview, isLoading }) => {
             whileTap={{ scale: 0.95 }}
             onClick={downloadCode}
             className={`p-2 rounded-lg border transition-colors duration-300 ${isDark
-                ? 'bg-white/5 border-white/10 hover:bg-white/10'
-                : 'bg-black/5 border-black/10 hover:bg-black/10'
+              ? 'bg-white/5 border-white/10 hover:bg-white/10'
+              : 'bg-black/5 border-black/10 hover:bg-black/10'
               }`}
             title="Download code"
           >
@@ -113,8 +113,8 @@ const CodeEditor = ({ content, setContent, onReview, isLoading }) => {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             className={`p-2 rounded-lg border transition-colors duration-300 cursor-pointer ${isDark
-                ? 'bg-white/5 border-white/10 hover:bg-white/10'
-                : 'bg-black/5 border-black/10 hover:bg-black/10'
+              ? 'bg-white/5 border-white/10 hover:bg-white/10'
+              : 'bg-black/5 border-black/10 hover:bg-black/10'
               }`}
             title="Upload file"
           >
@@ -133,8 +133,8 @@ const CodeEditor = ({ content, setContent, onReview, isLoading }) => {
       {/* Editor Container - Fixed height and scrolling */}
       <div className="flex-1 relative min-h-0">
         <div className={`absolute inset-0 overflow-auto transition-colors duration-300 ${isDark
-            ? 'scrollbar-thin scrollbar-thumb-white/20 scrollbar-track-transparent hover:scrollbar-thumb-white/40'
-            : 'scrollbar-thin scrollbar-thumb-black/20 scrollbar-track-transparent hover:scrollbar-thumb-black/40'
+          ? 'scrollbar-thin scrollbar-thumb-white/20 scrollbar-track-transparent hover:scrollbar-thumb-white/40'
+          : 'scrollbar-thin scrollbar-thumb-black/20 scrollbar-track-transparent hover:scrollbar-thumb-black/40'
           }`}>
           <Editor
             value={content}

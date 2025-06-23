@@ -10,6 +10,7 @@ import ReviewPanel from './components/ReviewPanel';
 import StatsPanel from './components/StatsPanel';
 import { useTheme } from './contexts/ThemeContext';
 
+
 function App() {
   const { isDark } = useTheme();
   const [content, setContent] = useState(`function calculateFactorial(n) {
@@ -86,8 +87,8 @@ console.log(calculateFactorial(5)); // Output: 120`);
 
   return (
     <div className={`min-h-screen w-full transition-colors duration-300 ${isDark
-        ? 'bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900'
-        : 'bg-gradient-to-br from-gray-50 via-blue-50 to-gray-50'
+      ? 'bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900'
+      : 'bg-gradient-to-br from-gray-50 via-blue-50 to-gray-50'
       }`}>
       {/* Animated background */}
       <div className="fixed inset-0 w-full h-full overflow-hidden pointer-events-none">
